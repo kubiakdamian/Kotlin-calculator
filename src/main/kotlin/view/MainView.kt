@@ -27,8 +27,8 @@ class MainView : View() {
                 calculatorContent.addSignToResult("/")
                 updateResultText()
             }
-            button("<-").setOnAction {
-                removeLastChar()
+            button("C").setOnAction {
+                clearResultText()
             }
         }
         hbox {
@@ -86,15 +86,16 @@ class MainView : View() {
             }
         }
         hbox {
-            button("C").setOnAction {
-                clearResultText()
+            button("(").setOnAction {
+                calculatorContent.addSignToResult("(")
+                updateResultText()
             }
             button("0").setOnAction {
                 calculatorContent.addSignToResult("0")
                 updateResultText()
             }
-            button("/").setOnAction {
-                calculatorContent.addSignToResult("/")
+            button(")").setOnAction {
+                calculatorContent.addSignToResult(")")
                 updateResultText()
             }
             button("=").setOnAction {
@@ -105,11 +106,6 @@ class MainView : View() {
 
     private fun updateResultText() {
         result.text = calculatorContent.result
-    }
-
-    private fun removeLastChar() {
-        calculatorContent.result = calculatorContent.result.substring(0, calculatorContent.result.length - 1)
-        updateResultText()
     }
 
     private fun clearResultText() {
