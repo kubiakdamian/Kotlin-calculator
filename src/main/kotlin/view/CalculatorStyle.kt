@@ -1,4 +1,8 @@
-import tornadofx.*
+package view
+
+import tornadofx.CssBox
+import tornadofx.Stylesheet
+import tornadofx.px
 
 class CalculatorStyle : Stylesheet() {
     val multiplier = 1.5

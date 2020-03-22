@@ -1,12 +1,17 @@
+package view
+
+import CalculatorContent
 import javafx.scene.control.TextField
+import operation.Calculation
 import tornadofx.*
 
 class MainView : View() {
 
     var result: TextField by singleAssign()
     var calculatorContent = CalculatorContent()
+    val calculation = Calculation()
 
-    override val root = vbox{
+    override val root = vbox {
         hbox {
             result = textfield()
             result.isEditable = false
@@ -82,7 +87,7 @@ class MainView : View() {
         }
         hbox {
             button("C").setOnAction {
-                println("Button 1 Pressed")
+                clearResultText()
             }
             button("0").setOnAction {
                 calculatorContent.addSignToResult("0")
@@ -93,7 +98,7 @@ class MainView : View() {
                 updateResultText()
             }
             button("=").setOnAction {
-                println("Button 4 Pressed")
+                calculate()
             }
         }
     }
@@ -104,6 +109,17 @@ class MainView : View() {
 
     private fun removeLastChar() {
         calculatorContent.result = calculatorContent.result.substring(0, calculatorContent.result.length - 1)
+        updateResultText()
+    }
+
+    private fun clearResultText() {
+        calculatorContent.result = ""
+        updateResultText()
+    }
+
+    private fun calculate() {
+        val calculationResult = calculation.calculate(calculatorContent.result)
+        calculatorContent.result = calculationResult.toString()
         updateResultText()
     }
 }
