@@ -1,9 +1,8 @@
-import tornadofx.CssBox
-import tornadofx.Stylesheet
-import tornadofx.px
+import tornadofx.*
 
-class ButtonStyle : Stylesheet() {
+class CalculatorStyle : Stylesheet() {
     val multiplier = 1.5
+
     init {
         button {
             padding = CssBox(5.px, 5.px, 5.px, 5.px)

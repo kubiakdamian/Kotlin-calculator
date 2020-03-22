@@ -6,9 +6,10 @@ class MainView : View() {
     var result: TextField by singleAssign()
     var calculatorContent = CalculatorContent()
 
-    override val root = vbox {
+    override val root = vbox{
         hbox {
             result = textfield()
+            result.isEditable = false
         }
         hbox {
             button("x2").setOnAction {
